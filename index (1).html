@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watashiwa Art — A Museum of Animation &amp; Anime</title>
+<meta name="description" content="Watashiwa Art is a cinematic digital museum exploring the complete history of animation and Japanese anime — from zoetropes to modern studios, legendary creators, and the future of the craft.">
+<meta name="keywords" content="anime history, animation history, Studio Ghibli, anime studios, Japanese animation, animation pipeline, anime culture">
+<meta property="og:title" content="Watashiwa Art — A Museum of Animation & Anime">
+<meta property="og:description" content="A premium interactive documentary about the art of animation and the world of anime.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOADING SCREEN ===================== -->
+<div class="loader" id="loader" aria-hidden="true">
+  <svg class="loader__zoetrope" viewBox="0 0 120 120">
+    <circle class="loader__ring" cx="60" cy="60" r="52"></circle>
+    <g class="loader__slats">
+      <rect x="58" y="6" width="4" height="18"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(30 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(60 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(90 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(120 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(150 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(180 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(210 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(240 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(270 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(300 60 60)"></rect>
+      <rect x="58" y="6" width="4" height="18" transform="rotate(330 60 60)"></rect>
+    </g>
+  </svg>
+  <p class="loader__label">WATASHIWA ART</p>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<!-- ===================== CUSTOM CURSOR ===================== -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ===================== FILM FRAME EDGES (signature motif) ===================== -->
+<div class="sprocket sprocket--left" aria-hidden="true"></div>
+<div class="sprocket sprocket--right" aria-hidden="true"></div>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand">
+    <span class="nav__brand-jp">私は</span>
+    <span class="nav__brand-en">WATASHIWA <em>ART</em></span>
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="#history-animation" data-nav>Animation</a>
+    <a href="#history-anime" data-nav>Anime History</a>
+    <a href="#studios" data-nav>Studios</a>
+    <a href="#popular-anime" data-nav>Popular Anime</a>
+    <a href="#creators" data-nav>Creators</a>
+    <a href="#pipeline" data-nav>Pipeline</a>
+    <a href="#culture" data-nav>Culture</a>
+    <a href="#future" data-nav>Future</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero__vignette" aria-hidden="true"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-reveal>絵が動く瞬間 — the moment a drawing begins to move</p>
+    <h1 class="hero__title">
+      <span class="hero__title-line" data-reveal>Twenty-four</span>
+      <span class="hero__title-line hero__title-line--accent" data-reveal>frames a second.</span>
+      <span class="hero__title-line" data-reveal>A century of wonder.</span>
+    </h1>
+    <p class="hero__subtitle" data-reveal>Watashiwa Art is a digital museum tracing animation from candle-lit optical toys to the modern anime industry — its history, its studios, its masters, and what comes next.</p>
+    <div class="hero__cta" data-reveal>
+      <a href="#history-animation" class="btn btn--primary">Begin the Journey</a>
+      <a href="#studios" class="btn btn--ghost">Explore the Studios</a>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 1: HISTORY OF ANIMATION ===================== -->
+<section class="section" id="history-animation">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter One</p>
+    <h2 class="section__title">The History of Animation</h2>
+    <p class="section__lede">Long before film, humans were already tricking the eye into seeing motion. This is the lineage of devices and breakthroughs that made drawings move.</p>
+  </div>
+
+  <div class="timeline" id="timeline-animation">
+    <div class="timeline__track" aria-hidden="true"></div>
+
+    <article class="timeline__item" data-year="c. 1650">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">c. 1650</span>
+        <h3>Ancient Optical Toys</h3>
+        <p>Devices like the thaumatrope and phenakistoscope exploited persistence of vision, proving that the human eye could be fooled into perceiving continuous motion from a sequence of still images.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1659">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1659</span>
+        <h3>The Magic Lantern</h3>
+        <p>An early image projector using a light source and glass slides. Showmen used sliding and layered plates to simulate movement centuries before cinema existed.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1834">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1834</span>
+        <h3>The Zoetrope</h3>
+        <p>A spinning drum with sequential images viewed through slits — the direct ancestor of Watashiwa Art's own spinning emblem, and one of the clearest bridges between toy and technology.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1877">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1877</span>
+        <h3>The Praxinoscope</h3>
+        <p>Émile Reynaud's improvement on the zoetrope used mirrors instead of slits, producing a brighter, less distorted illusion of motion and paving the way toward projected animation.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1900s–1920s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1900s–1920s</span>
+        <h3>The Silent Animation Era</h3>
+        <p>Pioneers such as Émile Cohl and Winsor McCay hand-drew thousands of frames for early shorts, establishing the vocabulary of character animation before sound existed.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1928">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1928</span>
+        <h3>The Walt Disney Revolution</h3>
+        <p>Synchronized sound, the multiplane camera, and industrialized production pipelines turned animation into a mass medium and set the technical standard for decades.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1930s–1960s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1930s–1960s</span>
+        <h3>The Golden Age of Animation</h3>
+        <p>Theatrical shorts from Disney, Warner Bros, and MGM refined timing, squash-and-stretch, and character acting into a mature visual language.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1950s–1980s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1950s–1980s</span>
+        <h3>Television Animation</h3>
+        <p>Smaller budgets and weekly deadlines forced limited-animation techniques — reused cycles, held cels, and expressive stillness — a constraint that would shape anime's own visual grammar.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1960s–1990s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1960s–1990s</span>
+        <h3>Computer Animation</h3>
+        <p>Early experiments at research labs and studios explored vector graphics and 3D wireframes, quietly building the foundation for an entire second history of animation.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1995">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1995</span>
+        <h3>The CGI Revolution</h3>
+        <p>Fully computer-generated feature films proved that rendered worlds could carry emotion and narrative just as well as hand-drawn ones, reshaping the industry's economics.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="2000s–Now">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">2000s–Now</span>
+        <h3>Modern Digital Animation</h3>
+        <p>Digital ink-and-paint, compositing software, and hybrid 2D/3D pipelines now let a single artist do what once required a full ink-and-paint department.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 2: HISTORY OF JAPANESE ANIME ===================== -->
+<section class="section section--alt" id="history-anime">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Two</p>
+    <h2 class="section__title">The History of Japanese Anime</h2>
+    <p class="section__lede">Anime grew from its own constraints and its own artists into a distinct visual language now watched by the entire world.</p>
+  </div>
+
+  <div class="timeline timeline--vertical" id="timeline-anime">
+    <div class="timeline__track" aria-hidden="true"></div>
+
+    <article class="timeline__item" data-year="1917">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1917</span>
+        <h3>Early Japanese Animation</h3>
+        <p>The earliest Japanese animated shorts were made by individual artists working almost entirely alone, drawing directly onto film stock with minimal equipment.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1950s–60s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1950s–60s</span>
+        <h3>Osamu Tezuka</h3>
+        <p>Often called the "God of Manga," Tezuka adapted limited-animation techniques from television budgets into a distinctive style — and founded Mushi Production, one of the industry's first dedicated TV animation studios.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1963">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1963</span>
+        <h3>Astro Boy</h3>
+        <p>Japan's first serialized weekly TV anime, adapted from Tezuka's manga. Its production model — fast turnaround, reused footage, expressive stills — defined the anime production template for generations.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1970s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1970s</span>
+        <h3>1970s Anime</h3>
+        <p>Giant robot and space epics matured alongside darker, more cinematic works, as studios like Sunrise and Toei Animation expanded television and theatrical output.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1980s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1980s</span>
+        <h3>The 1980s Boom</h3>
+        <p>Home video unlocked an OVA market free of broadcast restrictions, while theatrical works pushed budgets and ambition to new heights, expanding anime's audience abroad for the first time.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="1990s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">1990s</span>
+        <h3>1990s Classics</h3>
+        <p>A generation of philosophically ambitious, visually daring series and films earned anime serious international critical attention and a dedicated global fanbase.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="2000s">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">2000s</span>
+        <h3>The Digital Era</h3>
+        <p>Digital ink-and-paint and compositing replaced physical cels almost entirely, cutting costs while opening the door to more elaborate effects work.</p>
+      </div>
+    </article>
+
+    <article class="timeline__item" data-year="2010s–Now">
+      <div class="timeline__marker"></div>
+      <div class="timeline__card glass">
+        <span class="timeline__year">2010s–Now</span>
+        <h3>The Modern Anime Industry</h3>
+        <p>Global streaming platforms, simulcasts, and international co-production have turned anime from a niche import into one of the most commercially significant entertainment industries on Earth.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 3: FAMOUS STUDIOS ===================== -->
+<section class="section" id="studios">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Three</p>
+    <h2 class="section__title">Famous Animation Studios</h2>
+    <p class="section__lede">Every distinctive visual style in anime traces back to a studio culture — a house of artists with its own habits, ambitions, and signature look.</p>
+  </div>
+
+  <div class="card-grid" id="studioGrid">
+    <!-- Studio cards injected/enhanced by script.js; static markup below for no-JS + SEO -->
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Studio Ghibli — official artwork">
+        <!-- MEDIA SLOT: replace with officially licensed Studio Ghibli imagery. Do not use AI-generated art. -->
+        <span class="img-placeholder__label">Studio Ghibli</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Studio Ghibli</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1985</dd></div>
+          <div><dt>Founders</dt><dd>Hayao Miyazaki, Isao Takahata, Toshio Suzuki</dd></div>
+        </dl>
+        <p>Founded after the success of <em>Nausicaä of the Valley of the Wind</em>, Ghibli became synonymous with hand-painted worlds, environmental themes, and unhurried, humane storytelling.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Spirited Away, My Neighbor Totoro, Princess Mononoke, Grave of the Fireflies</p>
+        <div class="studio-card__actions">
+          <a href="https://www.ghibli.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Studio+Ghibli+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="MAPPA — official artwork">
+        <span class="img-placeholder__label">MAPPA</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>MAPPA</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>2011</dd></div>
+          <div><dt>Founder</dt><dd>Masao Maruyama</dd></div>
+        </dl>
+        <p>Founded by veteran producer Masao Maruyama, MAPPA rose rapidly in the 2020s on the strength of ambitious, high-throughput productions and willingness to take on demanding source material.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Jujutsu Kaisen, Attack on Titan (final seasons), Chainsaw Man, Vinland Saga</p>
+        <div class="studio-card__actions">
+          <a href="https://www.mappa.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=MAPPA+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="WIT Studio — official artwork">
+        <span class="img-placeholder__label">WIT Studio</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>WIT Studio</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>2012</dd></div>
+          <div><dt>Origin</dt><dd>Spun off from Production I.G</dd></div>
+        </dl>
+        <p>Formed by animators leaving Production I.G, WIT built its reputation on kinetic action choreography and painterly backgrounds in its earliest and most acclaimed work.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Attack on Titan (early seasons), Spy × Family, The Ancient Magus' Bride</p>
+        <div class="studio-card__actions">
+          <a href="https://www.witstudio.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=WIT+Studio+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="ufotable — official artwork">
+        <span class="img-placeholder__label">ufotable</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>ufotable</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>2000</dd></div>
+          <div><dt>Founder</dt><dd>Hikaru Kondo</dd></div>
+        </dl>
+        <p>ufotable is known for pushing 2D/3D hybrid effects work further than almost any studio in the industry, blending traditional animation with fluid CG environments.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Demon Slayer, Fate/stay night: Unlimited Blade Works, Tales of Zestiria the Cross</p>
+        <div class="studio-card__actions">
+          <a href="https://www.ufotable.com/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=ufotable+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Kyoto Animation — official artwork">
+        <span class="img-placeholder__label">Kyoto Animation</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Kyoto Animation</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1981</dd></div>
+          <div><dt>Founders</dt><dd>Yoko Hatta &amp; Hideaki Hatta</dd></div>
+        </dl>
+        <p>Beloved for meticulous character animation and quiet, emotionally observant storytelling, KyoAni built one of anime's most distinctive and consistent studio identities.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Violet Evergarden, A Silent Voice, K-On!, Clannad</p>
+        <div class="studio-card__actions">
+          <a href="https://www.kyotoanimation.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Kyoto+Animation+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Production I.G — official artwork">
+        <span class="img-placeholder__label">Production I.G</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Production I.G</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1987</dd></div>
+          <div><dt>Founder</dt><dd>Mitsuhisa Ishikawa</dd></div>
+        </dl>
+        <p>A pioneer of digital production techniques in anime, Production I.G helped define the modern cyberpunk aesthetic and remains a hub for prestige theatrical and TV work.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Ghost in the Shell, Haikyu!!, Psycho-Pass</p>
+        <div class="studio-card__actions">
+          <a href="https://www.production-ig.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Production+IG+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Bones — official artwork">
+        <span class="img-placeholder__label">Bones</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Bones</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1998</dd></div>
+          <div><dt>Founders</dt><dd>Former Sunrise staff, incl. Masahiko Minami</dd></div>
+        </dl>
+        <p>Founded by animators who left Sunrise, Bones is known for dynamic action direction and a knack for turning dense source manga into confident, well-paced adaptations.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Fullmetal Alchemist: Brotherhood, My Hero Academia, Mob Psycho 100</p>
+        <div class="studio-card__actions">
+          <a href="https://www.bones.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Bones+studio+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Madhouse — official artwork">
+        <span class="img-placeholder__label">Madhouse</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Madhouse</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1972</dd></div>
+          <div><dt>Founders</dt><dd>Masao Maruyama and colleagues</dd></div>
+        </dl>
+        <p>One of anime's oldest independent studios, Madhouse has nurtured an extraordinary range of directorial voices across five decades of theatrical and television work.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Death Note, Perfect Blue, One-Punch Man (S1), Hunter × Hunter (2011)</p>
+        <div class="studio-card__actions">
+          <a href="https://www.madhouse.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Madhouse+studio+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Sunrise — official artwork">
+        <span class="img-placeholder__label">Sunrise</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Sunrise</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1972</dd></div>
+          <div><dt>Now part of</dt><dd>Bandai Namco Filmworks</dd></div>
+        </dl>
+        <p>Sunrise built its identity on the giant robot genre before broadening into nearly every category of television anime, and remains one of the industry's most prolific houses.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Mobile Suit Gundam, Cowboy Bebop, Code Geass</p>
+        <div class="studio-card__actions">
+          <a href="https://www.sunrise-inc.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Sunrise+studio+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="A-1 Pictures — official artwork">
+        <span class="img-placeholder__label">A-1 Pictures</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>A-1 Pictures</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>2005</dd></div>
+          <div><dt>Parent</dt><dd>Aniplex / Sony Music Entertainment Japan</dd></div>
+        </dl>
+        <p>A subsidiary of Aniplex, A-1 Pictures has grown into one of the industry's largest studios, with polished production values across a wide range of genres.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Sword Art Online, Kaguya-sama: Love Is War, Blue Lock</p>
+        <div class="studio-card__actions">
+          <a href="https://www.a1p.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=A-1+Pictures+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Trigger — official artwork">
+        <span class="img-placeholder__label">Trigger</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Trigger</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>2011</dd></div>
+          <div><dt>Founders</dt><dd>Hiroyuki Imaishi, Masahiko Otsuka</dd></div>
+        </dl>
+        <p>Founded by former Gainax staff, Trigger is famous for maximalist energy, bold color work, and a willingness to break conventional animation timing for pure impact.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> Kill la Kill, Promare, Cyberpunk: Edgerunners</p>
+        <div class="studio-card__actions">
+          <a href="https://www.trigger.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Trigger+studio+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="studio-card glass" data-flip>
+      <div class="studio-card__media img-placeholder" data-placeholder="Toei Animation — official artwork">
+        <span class="img-placeholder__label">Toei Animation</span>
+      </div>
+      <div class="studio-card__body">
+        <h3>Toei Animation</h3>
+        <dl class="studio-card__facts">
+          <div><dt>Founded</dt><dd>1948</dd></div>
+          <div><dt>Legacy</dt><dd>Japan's oldest major animation studio</dd></div>
+        </dl>
+        <p>Toei has been in continuous operation since the earliest days of Japanese animation, and its long-running franchises have introduced anime to more first-time viewers worldwide than perhaps any other studio.</p>
+        <p class="studio-card__best"><strong>Best known for:</strong> One Piece, Dragon Ball, Sailor Moon</p>
+        <div class="studio-card__actions">
+          <a href="https://www.toei-anim.co.jp/" target="_blank" rel="noopener" class="btn btn--small btn--ghost">Official Website</a>
+          <a href="https://www.youtube.com/results?search_query=Toei+Animation+official" target="_blank" rel="noopener" class="btn btn--small btn--outline">Official YouTube</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 4: POPULAR MODERN ANIME ===================== -->
+<section class="section section--alt" id="popular-anime">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Four</p>
+    <h2 class="section__title">Popular Modern Anime</h2>
+    <p class="section__lede">A snapshot of the series currently defining the medium's global audience.</p>
+  </div>
+
+  <div class="anime-grid" id="animeGrid">
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Attack on Titan key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Attack on Titan</h3><span class="tag tag--gold">2013</span></div>
+        <p class="anime-card__meta">WIT Studio / MAPPA · Dark Fantasy, Action</p>
+        <p>Humanity survives behind colossal walls to keep flesh-eating Titans out — until a breach unravels every assumption about who the real enemy is.</p>
+        <div class="anime-card__stats"><span>Popularity: Global phenomenon</span><span>Multiple Anime Award wins</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Demon Slayer key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Demon Slayer</h3><span class="tag tag--gold">2019</span></div>
+        <p class="anime-card__meta">ufotable · Dark Fantasy, Action</p>
+        <p>A young swordsman hunts the demons that destroyed his family, animated with some of the most fluid effects work the medium has produced.</p>
+        <div class="anime-card__stats"><span>Popularity: Record-breaking box office</span><span>Multiple industry awards</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Jujutsu Kaisen key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Jujutsu Kaisen</h3><span class="tag tag--gold">2020</span></div>
+        <p class="anime-card__meta">MAPPA · Dark Fantasy, Action</p>
+        <p>A student swallows a cursed relic to save his friends and is pulled into a hidden war between sorcerers and the curses born from human malice.</p>
+        <div class="anime-card__stats"><span>Popularity: Top-tier global streaming hit</span><span>Multiple Anime Award wins</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Chainsaw Man key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Chainsaw Man</h3><span class="tag tag--gold">2022</span></div>
+        <p class="anime-card__meta">MAPPA · Dark Fantasy, Action</p>
+        <p>A debt-ridden young man merges with his chainsaw devil-dog to become a weapon for hire, in one of the most tonally fearless series of its decade.</p>
+        <div class="anime-card__stats"><span>Popularity: Breakout streaming hit</span><span>Critically acclaimed</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Frieren key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Frieren: Beyond Journey's End</h3><span class="tag tag--gold">2023</span></div>
+        <p class="anime-card__meta">Madhouse · Fantasy, Drama</p>
+        <p>An elf mage who outlives her entire adventuring party spends the decades after victory quietly learning what she missed about mortal life.</p>
+        <div class="anime-card__stats"><span>Popularity: Critical and audience darling</span><span>Multiple Anime Award wins</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Solo Leveling key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Solo Leveling</h3><span class="tag tag--gold">2024</span></div>
+        <p class="anime-card__meta">A-1 Pictures · Action, Fantasy</p>
+        <p>The weakest hunter alive gains a mysterious system that lets him level up without limit, adapted from one of the most-read web novels of its era.</p>
+        <div class="anime-card__stats"><span>Popularity: Global top-10 streaming hit</span><span>Fast-growing award recognition</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Spy x Family key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Spy × Family</h3><span class="tag tag--gold">2022</span></div>
+        <p class="anime-card__meta">WIT Studio &amp; CloverWorks · Comedy, Action</p>
+        <p>A spy, an assassin, and a telepath marry and adopt one another without realizing each other's secrets — and somehow become a real family anyway.</p>
+        <div class="anime-card__stats"><span>Popularity: Mainstream crossover hit</span><span>Multiple Anime Award wins</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Vinland Saga key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Vinland Saga</h3><span class="tag tag--gold">2019</span></div>
+        <p class="anime-card__meta">WIT Studio &amp; MAPPA · Historical, Drama</p>
+        <p>A Viking raised for war has to decide what a life without violence could even look like, in one of anime's most mature meditations on revenge.</p>
+        <div class="anime-card__stats"><span>Popularity: Critically acclaimed</span><span>Multiple industry nominations</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Blue Lock key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Blue Lock</h3><span class="tag tag--gold">2022</span></div>
+        <p class="anime-card__meta">8bit · Sports, Drama</p>
+        <p>Japan's most promising young strikers are locked in an isolated training facility built to manufacture a single, ruthlessly selfish World-Cup-winning egoist.</p>
+        <div class="anime-card__stats"><span>Popularity: Sports-genre breakout</span><span>Strong award momentum</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Oshi no Ko key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Oshi no Ko</h3><span class="tag tag--gold">2023</span></div>
+        <p class="anime-card__meta">Doga Kobo · Drama, Mystery</p>
+        <p>Twins reincarnated as the children of their favorite idol grow up inside the entertainment industry's most glamorous and most exploitative machinery.</p>
+        <div class="anime-card__stats"><span>Popularity: Critical and cultural breakout</span><span>Multiple Anime Award wins</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Dandadan key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Dandadan</h3><span class="tag tag--gold">2024</span></div>
+        <p class="anime-card__meta">Science SARU · Comedy, Supernatural</p>
+        <p>A believer in aliens and a believer in ghosts dare each other to prove the paranormal — and both turn out to be right, loudly and hilariously.</p>
+        <div class="anime-card__stats"><span>Popularity: Breakout hit</span><span>Widely praised animation direction</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Kaiju No. 8 key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Kaiju No. 8</h3><span class="tag tag--gold">2024</span></div>
+        <p class="anime-card__meta">Production I.G &amp; Studio Khara · Action, Sci-Fi</p>
+        <p>A monster-cleanup crew veteran gains kaiju powers of his own just as he tries to enlist in the elite defense force he'd long given up on joining.</p>
+        <div class="anime-card__stats"><span>Popularity: Top global streaming hit</span><span>Strong award recognition</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="The Apothecary Diaries key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>The Apothecary Diaries</h3><span class="tag tag--gold">2023</span></div>
+        <p class="anime-card__meta">TOHO animation STUDIO &amp; OLM · Mystery, Historical</p>
+        <p>A poison-obsessed apothecary drafted into palace service solves court intrigues with pharmacology instead of politics.</p>
+        <div class="anime-card__stats"><span>Popularity: Critical darling</span><span>Multiple Anime Award wins</span></div>
+      </div>
+    </article>
+
+    <article class="anime-card glass">
+      <div class="anime-card__media img-placeholder" data-placeholder="Witch Hat Atelier key art"></div>
+      <div class="anime-card__body">
+        <div class="anime-card__top"><h3>Witch Hat Atelier</h3><span class="tag tag--gold">Manga / anime in development</span></div>
+        <p class="anime-card__meta">Based on Kamome Shirahama's manga · Fantasy</p>
+        <p>A girl discovers that magic is a drawn craft rather than a birthright, and is quietly apprenticed into a world built on the ethics of who gets to learn it.</p>
+        <div class="anime-card__stats"><span>Popularity: Acclaimed source manga</span><span>Multiple manga award wins</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 5: LEGENDARY CREATORS ===================== -->
+<section class="section" id="creators">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Five</p>
+    <h2 class="section__title">Legendary Creators</h2>
+    <p class="section__lede">Individual visions that expanded what animation was allowed to say.</p>
+  </div>
+
+  <div class="creator-list" id="creatorList">
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Hayao Miyazaki portrait"></div>
+      <div class="creator__body">
+        <h3>Hayao Miyazaki</h3>
+        <p class="creator__role">Director, Co-founder of Studio Ghibli</p>
+        <p>Miyazaki's films pair painstaking hand-drawn craft with deep environmental and pacifist convictions, favoring quiet observation over spectacle. His flying machines, forest spirits, and unhurried heroines have shaped how the whole world pictures Japanese animation.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> co-founded Studio Ghibli and directed a string of films now considered among the medium's defining works, including Spirited Away and Princess Mononoke.</p>
+      </div>
+    </article>
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Osamu Tezuka portrait"></div>
+      <div class="creator__body">
+        <h3>Osamu Tezuka</h3>
+        <p class="creator__role">Manga artist, animator, founder of Mushi Production</p>
+        <p>Trained as a physician before turning to manga, Tezuka brought cinematic paneling and mature themes to a medium then seen as purely for children, then carried those instincts into television animation.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> pioneered limited-animation techniques for TV budgets with Astro Boy, effectively inventing the anime television production model.</p>
+      </div>
+    </article>
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Makoto Shinkai portrait"></div>
+      <div class="creator__body">
+        <h3>Makoto Shinkai</h3>
+        <p class="creator__role">Director</p>
+        <p>Shinkai built his reputation on hyper-detailed skies and cityscapes paired with intimate, often long-distance love stories, initially working with startlingly small teams before scaling up to major studio productions.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> proved that original, non-franchise anime films could achieve blockbuster success worldwide, most notably with Your Name.</p>
+      </div>
+    </article>
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Satoshi Kon portrait"></div>
+      <div class="creator__body">
+        <h3>Satoshi Kon</h3>
+        <p class="creator__role">Director</p>
+        <p>Kon specialized in psychologically dense, reality-bending narratives, using animation's freedom from physical constraints to depict identity, media, and dreaming with unusual precision.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> directed Perfect Blue and Paprika, films frequently cited as influences on live-action filmmakers well beyond animation.</p>
+      </div>
+    </article>
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Mamoru Hosoda portrait"></div>
+      <div class="creator__body">
+        <h3>Mamoru Hosoda</h3>
+        <p class="creator__role">Director, founder of Studio Chizu</p>
+        <p>After early work on major franchise films, Hosoda struck out independently to make family-centered stories that treat digital worlds and domestic life as equally real spaces.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> founded Studio Chizu and directed Summer Wars, Wolf Children, and Mirai, establishing an influential independent voice outside the major studio system.</p>
+      </div>
+    </article>
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Hideaki Anno portrait"></div>
+      <div class="creator__body">
+        <h3>Hideaki Anno</h3>
+        <p class="creator__role">Director, founder of Studio Khara</p>
+        <p>Anno used the giant-robot genre as a vehicle for unusually candid depictions of depression and isolation, permanently changing what a mecha series was allowed to be about.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> created Neon Genesis Evangelion and later founded Studio Khara to complete its film continuation over more than a decade.</p>
+      </div>
+    </article>
+
+    <article class="creator glass">
+      <div class="creator__portrait img-placeholder" data-placeholder="Naoko Yamada portrait"></div>
+      <div class="creator__body">
+        <h3>Naoko Yamada</h3>
+        <p class="creator__role">Director</p>
+        <p>Yamada's direction favors small physical gestures — a shifted foot, a held breath — over dialogue, turning teenage emotion into something almost architectural in how carefully it's staged.</p>
+        <p class="creator__contrib"><strong>Contribution:</strong> directed K-On!, A Silent Voice, and Liz and the Blue Bird, becoming one of the defining directorial voices to emerge from Kyoto Animation.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 6: ANIMATION PIPELINE ===================== -->
+<section class="section section--alt" id="pipeline">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Six</p>
+    <h2 class="section__title">The Animation Pipeline</h2>
+    <p class="section__lede">Every second of finished animation passes through the same eleven-stage relay, whether it was made in 1937 or this morning.</p>
+  </div>
+
+  <div class="pipeline" id="pipeline-flow">
+    <div class="pipeline__step" data-step="1"><span class="pipeline__num">01</span><h3>Idea</h3><p>A concept, premise, or adaptation source is chosen and shaped into a workable creative direction.</p></div>
+    <div class="pipeline__step" data-step="2"><span class="pipeline__num">02</span><h3>Script</h3><p>Dialogue, structure, and pacing are locked into a written screenplay for the episode or film.</p></div>
+    <div class="pipeline__step" data-step="3"><span class="pipeline__num">03</span><h3>Storyboard</h3><p>The script is translated into rough sequential panels establishing composition, camera, and timing.</p></div>
+    <div class="pipeline__step" data-step="4"><span class="pipeline__num">04</span><h3>Layout</h3><p>Storyboards are refined into precise scene layouts: exact staging, perspective, and backgrounds to animate against.</p></div>
+    <div class="pipeline__step" data-step="5"><span class="pipeline__num">05</span><h3>Key Animation</h3><p>Senior animators draw the essential poses that define each motion's beginning, end, and dramatic peak.</p></div>
+    <div class="pipeline__step" data-step="6"><span class="pipeline__num">06</span><h3>In-between</h3><p>In-between artists draw the frames connecting each key pose, producing smooth, continuous motion.</p></div>
+    <div class="pipeline__step" data-step="7"><span class="pipeline__num">07</span><h3>Background Art</h3><p>Painters render the environments each scene's characters will move through, often in a distinct visual register from the characters themselves.</p></div>
+    <div class="pipeline__step" data-step="8"><span class="pipeline__num">08</span><h3>Color</h3><p>Line art is digitally colored, cel by cel, according to a locked color-design reference for every character and set.</p></div>
+    <div class="pipeline__step" data-step="9"><span class="pipeline__num">09</span><h3>Compositing</h3><p>Characters, backgrounds, effects, and lighting passes are layered together into a single finished image per frame.</p></div>
+    <div class="pipeline__step" data-step="10"><span class="pipeline__num">10</span><h3>Editing</h3><p>Shots are cut together with sound, music, and voice performance to their final timing.</p></div>
+    <div class="pipeline__step" data-step="11"><span class="pipeline__num">11</span><h3>Final Animation</h3><p>The completed sequence is delivered — the single visible result of every invisible stage before it.</p></div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 7: ANIME CULTURE ===================== -->
+<section class="section" id="culture">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Seven</p>
+    <h2 class="section__title">Anime Culture</h2>
+    <p class="section__lede">Anime has never lived only on screen — it moves through print, sound, performance, and gathering.</p>
+  </div>
+
+  <div class="culture-grid" id="cultureGrid">
+    <article class="culture-card glass">
+      <h3>Manga</h3>
+      <p>The source material for most anime, manga's paneling and pacing conventions directly shape how adapted series are storyboarded and cut.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Light Novels</h3>
+      <p>Prose-driven, illustration-supported novels have become one of the industry's most reliable adaptation pipelines, especially for fantasy and isekai series.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Voice Acting</h3>
+      <p>Seiyuu culture treats voice performance as a distinct celebrity art form, with dedicated training academies, fan followings, and music careers of its own.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Music</h3>
+      <p>Opening and ending themes function as standalone commercial releases, and a series' score is often as recognizable as its visual style.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Anime Festivals</h3>
+      <p>Conventions and industry expos worldwide now serve as launch platforms for new titles, alongside fan gatherings built entirely around the culture itself.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Cosplay</h3>
+      <p>Costume performance has grown from a convention subculture into a global craft and competitive discipline in its own right.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Merchandise</h3>
+      <p>Figures, apparel, and collectibles represent a substantial share of franchise revenue, often exceeding the media itself.</p>
+    </article>
+    <article class="culture-card glass">
+      <h3>Streaming Platforms</h3>
+      <p>Simulcast licensing has compressed the gap between Japanese broadcast and worldwide viewing to nearly zero, reshaping how anime is produced and marketed.</p>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><span></span></div>
+
+<!-- ===================== SECTION 8: FUTURE OF ANIMATION ===================== -->
+<section class="section section--alt" id="future">
+  <div class="section__head">
+    <p class="section__eyebrow">Chapter Eight</p>
+    <h2 class="section__title">The Future of Animation</h2>
+    <p class="section__lede">The pipeline that has held for a century is beginning to change shape.</p>
+  </div>
+
+  <div class="future-grid" id="futureGrid">
+    <article class="future-card glass">
+      <h3>AI in Animation</h3>
+      <p>Studios are cautiously testing AI-assisted tools for in-betweening and cleanup, while the industry debates authorship, labor, and where the line belongs.</p>
+    </article>
+    <article class="future-card glass">
+      <h3>Hybrid Animation</h3>
+      <p>2D character work composited over 3D environments — already common in modern anime — continues to blur the line between the two disciplines.</p>
+    </article>
+    <article class="future-card glass">
+      <h3>Virtual Production</h3>
+      <p>LED-volume and real-time-camera techniques from live-action are beginning to inform how animated environments are previsualized and shot.</p>
+    </article>
+    <article class="future-card glass">
+      <h3>Real-time Rendering</h3>
+      <p>Game-engine rendering pipelines are shortening iteration time on lighting and effects that once required overnight render farms.</p>
+    </article>
+    <article class="future-card glass">
+      <h3>Stylized 3D</h3>
+      <p>A new generation of 3D work is deliberately chasing hand-drawn texture and timing rather than photorealism, narrowing the visual gap between 2D and CG.</p>
+    </article>
+    <article class="future-card glass">
+      <h3>Global Anime Industry</h3>
+      <p>International co-production and streaming demand are pulling anime production capacity — and labor conditions — into a genuinely worldwide conversation.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <span class="footer__brand-jp">私は</span>
+      <span class="footer__brand-en">WATASHIWA ART</span>
+      <p>A digital museum of animation and anime — built for learning, not for sale.</p>
+    </div>
+    <nav class="footer__links">
+      <a href="#history-animation">Animation</a>
+      <a href="#history-anime">Anime History</a>
+      <a href="#studios">Studios</a>
+      <a href="#popular-anime">Popular Anime</a>
+      <a href="#creators">Creators</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#culture">Culture</a>
+      <a href="#future">Future</a>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2026 Watashiwa Art. Educational fan project. All studio names, anime titles, and creator names are the property of their respective owners; no affiliation is implied.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
