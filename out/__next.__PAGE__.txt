@@ -1,5 +1,0 @@
-1:"$Sreact.fragment"
-2:I[76779,["/_next/static/chunks/0ty0.923-lts6.js"],"OutletBoundary"]
-3:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","iframe",null,{"src":"/watashiwa-index.html","style":{"width":"100%","height":"100vh","border":"none","display":"block"},"title":"Watashiwa Art — The Digital Museum of Animation & Anime","loading":"eager","referrerPolicy":"strict-origin-when-cross-origin"}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_C7B-3lk1aVxwjy4Abksq"}
-4:null

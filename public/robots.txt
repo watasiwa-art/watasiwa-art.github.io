@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://watasiwa-art.github.io/sitemap.xml
