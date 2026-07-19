@@ -95,4 +95,4 @@ This project aims to create an immersive anime-inspired web experience that comb
 - Accessibility improvements
 
 
-Made with ❤️ by Nahian Ahmed Nirob
+Made with ❤️ by NIROB
