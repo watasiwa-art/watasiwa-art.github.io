@@ -1,0 +1,13 @@
+{
+  "subdomain": "watasiwa-art",
+  "domain": "thedev.me",
+  "email_or_discord": "nirobnahianahmmed@gmail.com",
+  "github_username": "watasiwa-art",
+  "description": "My personal website",
+
+  "records": {
+    "CNAME": ["watasiwa-art.github.io"]
+  },
+
+  "proxied": true
+}
