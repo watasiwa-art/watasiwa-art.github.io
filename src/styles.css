@@ -1,0 +1,369 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource/anton';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Anton', 'Inter Variable', ui-sans-serif, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'YuGothic', Meiryo, 'Noto Sans JP', sans-serif;
+
+  --color-bg: #0a090b;
+  --color-surface: #121013;
+  --color-surface-2: #1a171c;
+  --color-line: #272329;
+  --color-line-strong: #3c3740;
+  --color-fg: #f2eee5;
+  --color-muted: #a39c8f;
+  --color-faint: #6e6860;
+  --color-accent: #ff3d2e;
+  --color-accent-2: #f3b544;
+  --color-accent-3: #74d8f2;
+
+  --radius-control: 2px;
+  --radius-card: 4px;
+  --radius-image: 3px;
+
+  --animate-marquee: marquee 46s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- art animation ------------------------------------------------ */
+@keyframes petal {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(-340px, 470px, 0) rotate(260deg);
+    opacity: 0;
+  }
+}
+@keyframes rain {
+  0% {
+    transform: translate3d(0, -140px, 0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(-70px, 620px, 0);
+    opacity: 0;
+  }
+}
+@keyframes sway {
+  0% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(-2.4deg) skewX(-5deg);
+  }
+  100% {
+    transform: rotate(1.6deg) skewX(4deg);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-1px) scaleY(1.012);
+  }
+}
+@keyframes drift {
+  0% {
+    transform: translateX(-46px);
+  }
+  100% {
+    transform: translateX(54px);
+  }
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 0.25;
+  }
+  46% {
+    opacity: 1;
+  }
+  71% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 0.4;
+  }
+  74% {
+    opacity: 0.9;
+  }
+}
+@keyframes speedline {
+  0% {
+    transform: translateX(-70px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(90px);
+    opacity: 0;
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes puff {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.4);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(40px, -18px, 0) scale(1.6);
+    opacity: 0;
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+@keyframes rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+}
+
+.art-sway,
+.art-sway-slow,
+.art-breathe,
+.art-cloud,
+.art-cloud-slow,
+.art-flicker,
+.art-flicker-slow,
+.art-speed,
+.art-twinkle,
+.art-puff,
+.art-dash,
+.art-petal,
+.art-rain,
+.art-rise {
+  transform-box: fill-box;
+}
+.art-sway {
+  animation: sway 4.4s ease-in-out infinite alternate;
+  transform-origin: left center;
+}
+.art-sway-slow {
+  animation: sway 6.8s ease-in-out infinite alternate-reverse;
+  transform-origin: left center;
+}
+.art-breathe {
+  animation: breathe 5.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.art-cloud {
+  animation: drift 34s ease-in-out infinite alternate;
+}
+.art-cloud-slow {
+  animation: drift 52s ease-in-out infinite alternate-reverse;
+}
+.art-flicker {
+  animation: flicker 5.5s steps(1, end) infinite;
+}
+.art-flicker-slow {
+  animation: flicker 8.4s steps(1, end) infinite;
+  animation-delay: 1.9s;
+}
+.art-speed {
+  animation: speedline 1.5s linear infinite;
+}
+.art-twinkle {
+  animation: twinkle 4.2s ease-in-out infinite;
+}
+.art-puff {
+  animation: puff 1.6s ease-out infinite;
+}
+.art-dash {
+  animation: dash 3s linear infinite;
+}
+.art-petal {
+  animation: petal 8s linear infinite;
+}
+.art-rain {
+  animation: rain 1.35s linear infinite;
+}
+.art-rise {
+  animation: rise 9s linear infinite;
+}
+
+/* Hovering a cut speeds its animation up: a still reads as a playing frame. */
+[data-playing='true'] .art-sway,
+[data-playing='true'] .art-sway-slow {
+  animation-duration: 1.6s;
+}
+[data-playing='true'] .art-petal {
+  animation-duration: 3.4s;
+}
+[data-playing='true'] .art-cloud,
+[data-playing='true'] .art-cloud-slow {
+  animation-duration: 12s;
+}
+[data-playing='true'] .art-breathe {
+  animation-duration: 2s;
+}
+[data-playing='true'] .art-speed {
+  animation-duration: 0.7s;
+}
+
+/* Reflected light off a wet street, drifting dust, film vignette. */
+.film::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(125% 105% at 50% 42%, transparent 42%, rgb(6 5 8 / 0.62) 100%);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    corner-shape: squircle;
+    border-color: var(--color-line);
+  }
+  .round,
+  .round::before,
+  .round::after {
+    corner-shape: round;
+  }
+  html {
+    background: var(--color-bg);
+    color-scheme: dark;
+    overscroll-behavior-y: none;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    letter-spacing: -0.008em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  button,
+  input,
+  textarea {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: #fff8f4;
+  }
+  img {
+    user-select: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Poster type. Anton is already condensed; keep it tight and let it sit low. */
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+@utility font-jp {
+  font-family: var(--font-jp);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@utility image-frame {
+  background: var(--color-surface-2);
+  overflow: hidden;
+}
+
+/* Grain, sized small so it reads as stock, not as noise. */
+@utility grain {
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
