@@ -14,16 +14,23 @@ export function Footer() {
   async function submit(e: FormEvent) {
     e.preventDefault()
     setState('sending')
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    if (response.ok) {
-      setState('done')
-    } else {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (response.ok) {
+        setState('done')
+      } else {
+        setState('error')
+        const data = (await response.json().catch(() => null)) as { error?: string } | null
+        setError(data?.error ?? 'Something went wrong.')
+      }
+    } catch {
+      // Static hosting (e.g. GitHub Pages) has no /api/contact endpoint.
       setState('error')
-      setError(((await response.json()) as { error?: string }).error ?? 'Something went wrong.')
+      setError(`Couldn’t send from this page — email ${site.email} instead.`)
     }
   }
 
